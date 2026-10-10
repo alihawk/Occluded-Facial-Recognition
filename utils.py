@@ -7,15 +7,15 @@ import sys
 from tqdm import tqdm
 from create_mask.mask import create_mask
 
-def face_detection(img_path,device="cuda"):
-    # device = torch.device("cuda")
-    device = torch.device(device)
+def face_detection(img_path,device=None):
+    # use the GPU when available, otherwise fall back to CPU
+    device = torch.device(device or ("cuda" if torch.cuda.is_available() else "cpu"))
     conf_thresh = 0.3
     target_size = (300, 300)
 
 
     net = SSD("test")
-    net.load_state_dict(torch.load('face_detection/weights/WIDERFace_DSFD_RES152.pth'))
+    net.load_state_dict(torch.load('face_detection/weights/WIDERFace_DSFD_RES152.pth', map_location=device))
     net.to(device).eval();
 
     # img_path = './imgs/12_Group_Group_12_Group_Group_12_128.jpg'

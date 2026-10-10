@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+tempCodeRunnerFile.py
+.ipynb_checkpoints/
+.DS_Store
+
+# large model weights (download separately, see README)
+face_detection/weights/*.pth
+
+# generated data and models
+dataset_with_mask/
+models/
+export.pkl
