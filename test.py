@@ -8,7 +8,7 @@ import torch
 from PIL import Image
 
 
-learn = load_learner(".")
+learn = load_learner("dataset_with_mask")  # train.py exports the model next to the training data
 
 
 classNames = ['angela_markel','anushka_sharma','donald_trump','narendra_modi',"salman_khan",'shushant_singh_rajput',"valdimir_putin"]
